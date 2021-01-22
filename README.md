@@ -27,6 +27,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## 跨域
 
-### 1.什么是前端跨域
+### + 什么是前端跨域
 
-### 2.怎么解决前端跨域
+### + 怎么解决前端跨域
