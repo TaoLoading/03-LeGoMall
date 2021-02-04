@@ -32,3 +32,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 * 浏览器请求必须遵循同源策略：同域名、同端口、同协议
 
 ### 2. 怎么解决前端跨域
+* CORS跨域
+* JSONP跨域
+* 代理跨域
