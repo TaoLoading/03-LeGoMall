@@ -40,7 +40,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 * JSONP跨域
 * 代理跨域
 
-### 03.按照模块化和组件化的思想整理项目结构
+### 03.按照模块化和组件化的思想初步整理项目结构
 
 * api文件夹用于存放接口文档
 * util文件夹用于存在共用机制，如金额格式化、文字转换等
