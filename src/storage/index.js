@@ -1,4 +1,4 @@
-/* 封装sessionStorage */
+// 封装sessionStorage
 const STORAGE_KEY = 'mall'
 export default {
 	// 存储值
@@ -33,6 +33,6 @@ export default {
 		} else {
 			delete val[key]
 		}
-		window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(val))
+		this.setItem(STORAGE_KEY, val)
 	},
 }

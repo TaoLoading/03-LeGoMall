@@ -84,3 +84,18 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     2. 配置完成后可以在App.vue的mounted()进行测试
 
 ### 03.接口错误拦截
+
+1. 错误拦截的应用环境
+    * 统一报错
+    * 未登录时统一拦截
+    * 请求之、返回值统一拦截
+2. 借助axios实现响应信息的拦截
+3. 配置过程
+    1. 在main.js中分别引入axios和vue-axios插件并声明使用
+    2. 配置基础信息
+        * axios.defaults.baseURL = '/api'
+        * 响应超时限制：axios.defaults.timeout = 8000
+    3. 配置拦截器interceptors，对拦截到的信息根据内容的不同做出相应的判断
+        * 首先获取response.data，这并不是最终响应给出的值，而是经过axios封装后接口返回的值
+        * 判断返回值中的状态码，其中0代表成功，10代表未登录，其他状态码后续补充
+        * 最后根据状态码的不同给出不同的响应，实现错误拦截
