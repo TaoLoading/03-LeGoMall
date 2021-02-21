@@ -38,7 +38,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 1. CORS跨域
 2. JSONP跨域
-3. 代理跨域
+3. 代理跨域(本项目采用)
 
 ### 03.按照模块化和组件化的思想初步整理项目结构
 
@@ -106,4 +106,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 2. 实现Mock的三种方案
     * 本地创建json
     * easy-mock平台
-    * 集成Mock API
+    * 集成Mock API(本项目采用)
