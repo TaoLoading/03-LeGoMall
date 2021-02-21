@@ -83,9 +83,9 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
         * 分别配置setItem()、getItem()、getStorage()、clear()以实现对应的功能
     2. 配置完成后可以在App.vue的mounted()进行测试
 
-### 03.接口错误拦截
+### 03.错误拦截
 
-1. 错误拦截的应用环境
+1. 错误拦截的应用场景
     * 统一报错
     * 未登录时统一拦截
     * 请求之、返回值统一拦截
@@ -99,3 +99,11 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
         * 首先获取response.data，这并不是最终响应给出的值，而是经过axios封装后接口返回的值
         * 判断返回值中的状态码，其中0代表成功，10代表未登录，其他状态码后续补充
         * 最后根据状态码的不同给出不同的响应，实现错误拦截
+
+### 04.Mock模拟数据
+1. Mock的概念
+    * Mock测试就是在测试过程中，对于某些不容易构造或者不容易获取的对象，用一个虚拟的对象来创建以便测试的测试方法。这个虚拟的对象就是Mock对象。Mock对象就是真实对象在调试期间的代替品。
+2. 实现Mock的三种方案
+    * 本地创建json
+    * easy-mock平台
+    * 集成Mock API

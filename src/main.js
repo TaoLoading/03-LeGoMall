@@ -4,7 +4,14 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import App from './App.vue'
 
-// 配置信息
+// 配置Mock
+// mock开关
+const mock = true
+if (mock) {
+	require('./mock/api.js')
+}
+
+// 响应配置信息
 // 根据前端的跨域方式做调整
 axios.defaults.baseURL = '/api'
 // 响应超时限制

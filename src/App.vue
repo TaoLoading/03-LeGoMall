@@ -5,19 +5,29 @@
 </template>
 
 <script>
-import storage from './storage/index.js'
+// import storage from './storage/index.js'
 export default {
 	name: 'app',
 	components: {},
 	data() {
-		return {}
+		return {
+			res: {},
+		}
 	},
 	mounted() {
-		// storage.setItem('a', 1)
-		// storage.setItem('user', { a: 1 })
-		// storage.setItem('abc', { a: 1 }, 'user')
-		// storage.clear('a')
-		storage.clear('a', 'user')
+		/**
+		 * 测试封装的storage
+		 * storage.setItem('a', 1)
+		 * storage.setItem('user', { a: 1 })
+		 * storage.setItem('abc', { a: 1 }, 'user')
+		 * storage.clear('a')
+		 * storage.clear('a', 'user')
+		 */
+
+		//  本地集成mock.js实现数据mock
+		this.axios.get('/user/login').then((res) => {
+			this.res = res
+		})
 	},
 }
 </script>
