@@ -56,13 +56,13 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 1. 根据设计稿对页面进行拆分，根据页面组件的可复用性明确页面组件之间的嵌套关系，在配置路由时要遵循这一嵌套关系
     * 如首页、商品栈和商品详情共用一个父路由，订单下的订单确认、订单列表和订单支付共用一个父路由
 2. 封装过程
-   1. 在router.js中引入路由文件并配置
-       * 引入路由文件
-       * ` Vue.use(Router) `
-       * ` export default new Router({配置信息}) `
-   2. 在main.js中加载路由
-       * 引入总路由文件router
-       * ` new Vue({ router, }) `加载
+    1. 在router.js中引入路由文件并配置
+        * 引入路由文件
+        * ` Vue.use(Router) `
+        * ` export default new Router({配置信息}) `
+    2. 在main.js中加载路由
+        * 引入总路由文件router
+        * ` new Vue({ router, }) `加载
 
 ### 02.封装Storage
 
@@ -73,3 +73,14 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     * 路径：Cookie有路径限制，Storage存储于域名下没有路径限制
     * API：Cookie没有特定的API，需要通过document.cookie去调用；而Storage有对应的API，可以直接调用
 2. 为什么要封装Storage，本身不是已经有API了吗？
+    * 本身有API，但只是简单的key/value形式
+    * 只存储字符串，需要人工转换成json对象
+    * 自带的API对Storage只能一次性清空，不能单个清空
+3. 此处封装的是sessionStorage
+4. 封装过程
+    1. 在storage文件夹中的index.js文件中进行配置
+        * 定义一个STORAGE_KEY为mall，此后每条storage信息都添加到对应的value上，以方便阅读
+        * 分别配置setItem()、getItem()、getStorage()、clear()以实现对应的功能
+    2. 配置完成后可以在App.vue的mounted()进行测试
+
+### 03.接口错误拦截
