@@ -55,10 +55,21 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 1. 根据设计稿对页面进行拆分，根据页面组件的可复用性明确页面组件之间的嵌套关系，在配置路由时要遵循这一嵌套关系
     * 如首页、商品栈和商品详情共用一个父路由，订单下的订单确认、订单列表和订单支付共用一个父路由
-2. 在router.js中引入路由文件并配置
-    * 引入路由文件
-    * ` Vue.use(Router) `
-    * ` export default new Router({配置信息}) `
-3. 在main.js中加载路由
-   * 引入总路由文件router
-   * ` new Vue({ router, }) `加载
+2. 封装过程
+   1. 在router.js中引入路由文件并配置
+       * 引入路由文件
+       * ` Vue.use(Router) `
+       * ` export default new Router({配置信息}) `
+   2. 在main.js中加载路由
+       * 引入总路由文件router
+       * ` new Vue({ router, }) `加载
+
+### 02.封装Storage
+
+1. Cookie、localStorage、sessionStorage三者的区别
+    * 存储大小：Cookie4k，Storage5M
+    * 有效期：Cookie可自行设置有效期，Storage不可设置有效期。且localStorage为永久储存，除非手动清除localStorage；而sessionStorage当页面或者浏览器被关闭后自动清除
+    * 与服务器的通信：Cookie会发送到服务器端，而Storage只存在于浏览器端，不参与和服务器的通信
+    * 路径：Cookie有路径限制，Storage存储于域名下没有路径限制
+    * API：Cookie没有特定的API，需要通过document.cookie去调用；而Storage有对应的API，可以直接调用
+2. 为什么要封装Storage，本身不是已经有API了吗？
