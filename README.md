@@ -125,4 +125,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### 01. 首页开发
 
 1. css
-    * 最小宽度设置为1126px
+    * config.scss 项目css文件
+    * reset.scss 初始化css文件
