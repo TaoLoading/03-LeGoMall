@@ -82,6 +82,11 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
         * 定义一个STORAGE_KEY为mall，此后每条storage信息都添加到对应的value上，以方便阅读
         * 分别配置setItem()、getItem()、getStorage()、clear()以实现对应的功能
     2. 配置完成后可以在App.vue的mounted()进行测试
+        * storage.setItem('a', 1)
+        * storage.setItem('user', { a: 1 })
+        * storage.setItem('abc', { a: 1 }, 'user')
+        * storage.clear('a')
+        * storage.clear('a', 'user')
 
 ### 03.错误拦截
 
@@ -107,3 +112,13 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     * 本地创建json
     * easy-mock平台
     * 集成Mock API(本项目采用)
+3. 本地集成mock.js实现数据mock
+    ```
+        this.axios.get('/user/login').then((res) => {
+			this.res = res
+		}) 
+    ```
+
+## Day03 内容
+
+### 01.
