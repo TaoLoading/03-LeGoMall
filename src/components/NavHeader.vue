@@ -39,6 +39,7 @@
 				<div class="header-menu">
 					<div class="item-menu">
 						<span>小米手机</span>
+                        <!-- 小米手机下拉菜单 -->
 						<div class="children">
 							<ul>
 								<li
@@ -72,6 +73,7 @@
 					</div>
 					<div class="item-menu">
 						<span>电视</span>
+                        <!-- 电视下拉菜单 -->
 						<div class="children">
 							<ul>
 								<li class="product">

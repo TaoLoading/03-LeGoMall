@@ -120,10 +120,25 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 		}) 
     ```
 
-## Day03 内容
+## Day03 内容（首页开发-1）
 
 ### 01. 首页开发
 
-1. css
-    * config.scss 项目css文件
-    * reset.scss 初始化css文件
+1. HTML
+    * 根据页面布局使用div建立网页基本结构
+
+### 01. HTML
+
+1.根据页面布局使用div建立网页基本结构
+
+### 02.Scss
+
+1. 概念
+    * Sass是成熟、稳定、强大的CSS预处理器，而SCSS是Sass3版本当中引入的新语法特性，完全兼容CSS3的同时继承了Sass强大的动态功能。使用scss完善网页样式。
+2. Scss文件结构
+    * config.scss 项目css样式
+    * reset.scss 初始化css样式
+    * base.scss 公共css样式
+    * mixin.scss 公共css样式(mixin版本，将多个样式定义为方法，简化css的书写)
+    * 后续scss文件随时随进度补充 
+3. 注：在使用scss时可能会报错，是因为插件版本不兼容
