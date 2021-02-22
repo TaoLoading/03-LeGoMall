@@ -106,6 +106,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
         * 最后根据状态码的不同给出不同的响应，实现错误拦截
 
 ### 04.Mock模拟数据
+
 1. Mock的概念
     * Mock测试就是在测试过程中，对于某些不容易构造或者不容易获取的对象，用一个虚拟的对象来创建以便测试的测试方法。这个虚拟的对象就是Mock对象。Mock对象就是真实对象在调试期间的代替品。
 2. 实现Mock的三种方案
@@ -121,4 +122,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Day03 内容
 
-### 01.
+### 01. 首页开发
+
+1. css
+    * 最小宽度设置为1126px
