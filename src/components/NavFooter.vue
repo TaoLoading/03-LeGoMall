@@ -6,9 +6,9 @@
     </div>             
     <div class="footer-link">
       <a href="https://github.com/TaoLoading" target="_blank">TaoLoading</a><span>|</span>
-      <a href="javascript:;" target="_blank">七天无理由退货</a><span>|</span>
-      <a href="javascript:;" target="_blank">15天免费送货</a><span>|</span>
-      <a href="javascript:;" target="_blank">满100元包邮</a>
+      <a href="javascript:;" target="_blank">线下门店</a><span>|</span>
+      <a href="javascript:;" target="_blank">关于乐购</a><span>|</span>
+      <a href="javascript:;" target="_blank">售后服务</a>
     </div>
     <div class="copyright">Copyright ©2021 <span class="domain">legou.com</span> All Rights Reserved.</div>
   </div>
