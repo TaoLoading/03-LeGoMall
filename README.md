@@ -120,7 +120,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 		}) 
     ```
 
-## Part03 内容（NavHeader）
+## Part03 内容（首页-NavHeader）
 
 ### 01.HTML
 
@@ -180,3 +180,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
               },
             },
             ```
+
+## Part04 内容（首页-NavFooter和ServiceBar）
+
+### 没有难度，简单略过
