@@ -25,7 +25,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # 项目进程
 
-## Day01 内容
+## Part01 内容
 
 ### 01.建立项目框架
 
@@ -49,7 +49,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 5. pages文件用于存放页面代码，其中使用组件化的思想对页面进行拆分和重组
 6. router.js文件用于存放路由
 
-## Day02 内容
+## Part02 内容
 
 ### 01.封装路由
 
@@ -120,16 +120,11 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 		}) 
     ```
 
-## Day03 内容（首页开发-1）
+## Part03 内容（NavHeader）
 
-### 01. 首页开发
+### 01.HTML
 
-1. HTML
-    * 根据页面布局使用div建立网页基本结构
-
-### 01. HTML
-
-1.根据页面布局使用div建立网页基本结构
+1. 根据页面布局使用div建立网页基本结构
 
 ### 02.Scss
 
@@ -142,3 +137,46 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     * mixin.scss 公共css样式(mixin版本，将多个样式定义为方法，简化css的书写)
     * 后续scss文件随时随进度补充 
 3. 注：在使用scss时可能会报错，是因为插件版本不兼容
+
+### 03.调用产品接口读取产品数据
+
+1. 应用位置
+    * 顶部商品菜单下拉后展示的多个手机是通过调用产品接口从数据库中读取得出的
+2. 过程
+    1. 分别定义初试数据data、方法methods、调用过程mounted，即定义调用方式
+        * methods：
+        ```
+        // 获取产品信息
+        getProductList(){
+            this.axios.get('/products',{
+                params:{
+                  // 向服务器发送参数以获取相应的信息(数据库中100012代表小米手机)
+                    categoryId:'100012'
+                }
+            })
+            // 由于只展示6栏故只获取前六项数据
+            .then((res)=>{
+                if(res.list.length>6){
+                    this.phoneList = res.list.slice(0,6)
+                }
+            })
+        }
+        ```
+    2. 由于使用的是代理跨域，故需在vue.config.js中将目标地址改为后台项目地址
+        * ` target: 'http://mall-pre.springboot.cn' `
+    3. 在调试工具的network中看是否成功返回产品信息
+    4. 在HTML中读取数据
+        * 使用` v-for="(item, index) in phoneList" :key="index" `遍历得到的数据phoneList
+        * 使用` v-bind:href="'/#/product/' + item.id" `绑定对应的产品
+        * 使用` :src="item.mainImage" `绑定对应产品的图片地址
+        * 使用` :alt="item.subtitle" `绑定对应产品的名称
+        * 使用模板语法得到产品名称及价格
+        * 注：在显示价格时为使结果更加严谨添加了过滤器
+            ``` 
+            filters: {
+              currency(val) {
+              if (!val) return '0.00'
+              return '￥' + val.toFixed(2) + '元'
+              },
+            },
+            ```

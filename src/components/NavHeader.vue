@@ -1,16 +1,16 @@
 <template>
 	<div class="header">
-        <!-- 页面导航条 -->
+    <!-- 页面导航条 -->
 		<div class="nav-topbar">
 			<div class="container">
-                <!-- 左侧菜单 -->
+        <!-- 左侧菜单 -->
 				<div class="topbar-menu">
 					<a href="javascript:;">乐购商城</a>
 					<a href="javascript:;">乐购门店</a>
 					<a href="javascript:;">乐购服务</a>
 					<a href="javascript:;">协议规则</a>
 				</div>
-                <!-- 右侧用户 -->
+        <!-- 右侧用户 -->
 				<div class="topbar-user">
 					<a href="javascript:;" v-if="username">{{ username }}</a>
 					<a href="javascript:;" v-if="!username" @click="login"
@@ -28,18 +28,18 @@
 				</div>
 			</div>
 		</div>
-        <!-- 商品导航条 -->
+    <!-- 商品导航条 -->
 		<div class="nav-header">
 			<div class="container">
-                <!-- logo -->
+        <!-- logo -->
 				<div class="header-logo">
 					<a href="/#/index"></a>
 				</div>
-                <!-- 顶部商品菜单 -->
+        <!-- 顶部商品菜单 -->
 				<div class="header-menu">
 					<div class="item-menu">
 						<span>小米手机</span>
-                        <!-- 小米手机下拉菜单 -->
+            <!-- 小米手机下拉菜单 -->
 						<div class="children">
 							<ul>
 								<li
@@ -73,7 +73,7 @@
 					</div>
 					<div class="item-menu">
 						<span>电视</span>
-                        <!-- 电视下拉菜单 -->
+            <!-- 电视下拉菜单 -->
 						<div class="children">
 							<ul>
 								<li class="product">
@@ -174,7 +174,7 @@
 						</div>
 					</div>
 				</div>
-                <!-- 搜索框 -->
+        <!-- 搜索框 -->
 				<div class="header-search">
 					<div class="wrapper">
 						<input type="text" name="keyword" />
@@ -189,6 +189,47 @@
 <script>
 export default {
 	name: 'nav-header',
+    data() {
+        return {
+            username:'jack',
+            phoneList:[]
+        }
+    },
+    // 用于加工价格显示的过滤器
+    filters: {
+      currency(val) {
+        if (!val) return '0.00'
+        return '￥' + val.toFixed(2) + '元'
+      },
+    },
+    mounted() {
+        this.getProductList()
+    },
+    methods: {
+      // 获取产品信息
+      getProductList(){
+        this.axios.get('/products',{
+          params:{
+            // 向服务器发送参数以获取相应的信息(数据库中100012代表小米手机)
+            categoryId:'100012'
+          }
+        })
+        // 由于只展示6栏故只获取前六项数据
+        .then((res)=>{
+          if(res.list.length>6){
+            this.phoneList = res.list.slice(0,6)
+          }
+        })
+      },
+      // 跳转到登录页面
+      login() {
+        this.$router.push('/login')
+      },
+      // 跳转到购物车页面
+      goToCart() {
+        this.$router.push('/cart')
+    },
+  },
 }
 </script>
 <style lang="scss">
