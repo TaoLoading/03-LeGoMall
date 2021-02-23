@@ -184,3 +184,11 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ## Part04 内容（首页-NavFooter和ServiceBar）
 
 ### 没有难度，简单略过
+
+## Part05 内容（首页-轮播图）
+
+### 01.轮播图功能
+
+1. 基础轮播
+2. 点击跳转到商品详情
+3. 拖拽样式
