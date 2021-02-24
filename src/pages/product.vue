@@ -49,6 +49,7 @@
         </swiper>
         <p class="desc">小米8 AI变焦双摄拍摄</p>
       </div>
+      <!-- 视频弹窗 -->
       <div class="item-video">
         <h2>60帧超慢动作摄影<br />慢慢回味每一瞬间的精彩</h2>
         <p>
@@ -57,7 +58,9 @@
         </p>
         <div class="video-bg" @click="showSlide = 'slideDown'"></div>
         <div class="video-box" v-show="showSlide">
+          <!-- 遮罩层 -->
           <div class="overlay"></div>
+          <!-- 视频 -->
           <div class="video" v-bind:class="showSlide">
             <span class="icon-close" @click="closeVideo"></span>
             <video
@@ -84,8 +87,10 @@ export default {
   },
   data() {
     return {
-      showSlide: '', //控制动画效果
-      product: {}, //商品信息
+      // 控制动画效果
+      showSlide: '',
+      // 商品信息
+      product: {},
       swiperOption: {
         autoplay: true,
         slidesPerView: 3,
@@ -102,16 +107,19 @@ export default {
     this.getProductInfo()
   },
   methods: {
+    // 调用接口获取产品信息
     getProductInfo() {
       let id = this.$route.params.id
       this.axios.get(`/products/${id}`).then((res) => {
         this.product = res
       })
     },
+    // 立即购买
     buy() {
       let id = this.$route.params.id
       this.$router.push(`/detail/${id}`)
     },
+    // 关闭视频
     closeVideo() {
       this.showSlide = 'slideUp'
       setTimeout(() => {

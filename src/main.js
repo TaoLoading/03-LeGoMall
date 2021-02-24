@@ -33,9 +33,11 @@ axios.interceptors.response.use(function(response) {
 	} // 状态码为10代表未登录
 	else if (res.status == 10) {
 		// 如果不是在首页
-		if (path != '#/index') {
+		if (path != '#/index' && path != '#/product/30') {
 			// 跳转到登录页面
-			window.localtion.href = '/#/login'
+			window.location.href = '/#/login'
+			// 抛出异常
+			return Promise.reject(res)
 		}
 	} else {
 		alert(res.msg)
