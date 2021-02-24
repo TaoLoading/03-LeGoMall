@@ -416,3 +416,21 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     },
     ```
 3. 定义动态样式isFixed，并定义到:class中
+
+### 2.视频弹窗实现
+
+1. 借助HTML5中videos实现
+    ```
+    <video
+      src="/imgs/product/video.mp4"
+      muted
+      autoplay
+      controls="controls"
+    ></video>
+    ```
+2. 完善弹窗的css样式
+3. 借助animation实现弹入弹出动画
+4. 调用接口获取商品信息，并渲染到商品站页面
+5. 解决打开调试工具后视频会出现
+    * 原因：调试工具打开后视频窗口变小，而之前视频移除是靠位移距离实现的，窗口变小导致视频出现
+    * 解决：定义计时器，时间设置为关闭视频动画的所需时间，当点击关闭视频按钮后，先实现视频关闭动画，再隐藏整个视频结构
