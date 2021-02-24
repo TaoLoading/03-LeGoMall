@@ -54,7 +54,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### 01.封装路由
 
 1. 根据设计稿对页面进行拆分，根据页面组件的可复用性明确页面组件之间的嵌套关系，在配置路由时要遵循这一嵌套关系
-    * 如首页、商品栈和商品详情共用一个父路由，订单下的订单确认、订单列表和订单支付共用一个父路由
+    * 如首页、商品站和商品详情共用一个父路由，订单下的订单确认、订单列表和订单支付共用一个父路由
 2. 封装过程
     1. 在router.js中引入路由文件并配置
         * 引入路由文件
@@ -389,3 +389,30 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     },
     ```
     * 注：在computed中读取数据而不是在data中直接读取，是因为当程序启动时，先加载App.vue，再加载NavHeader.vue。调用接口获取用户信息并写入的整个过程放在App.vue中，整个过程需要时间，而在NavHeader.vue中读取数据的过程相比之下几乎不需要时间，这就导致了先在NavHeader.vue中读取数据时数据还没有被请求回来，所以这种情况有可能会取不到值
+
+## Part07 内容（商品站）
+
+### 1.磁吸效果实现
+
+1. 定义实现磁吸效果的方法
+    ```
+    methods: {
+      // 磁吸效果实现
+      // 兼容性处理
+      initHeight() {
+        let scrollTop =
+          window.pageYOffset ||
+          document.documentElement.scrollTop ||
+          document.body.scrollTop
+        // 滚动距离超过152开始固定
+        this.isFixed = scrollTop > 152 ? true : false
+      },
+    },
+    ```
+2. 添加页面滚动的事件监听
+    ```
+    mounted() {
+      window.addEventListener('scroll', this.initHeight)
+    },
+    ```
+3. 定义动态样式isFixed，并定义到:class中

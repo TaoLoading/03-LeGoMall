@@ -28,11 +28,14 @@ export default {
     window.addEventListener('scroll', this.initHeight)
   },
   methods: {
+    // 磁吸效果实现
+    // 兼容性处理
     initHeight() {
       let scrollTop =
         window.pageYOffset ||
         document.documentElement.scrollTop ||
         document.body.scrollTop
+      // 滚动距离超过152开始固定
       this.isFixed = scrollTop > 152 ? true : false
     },
   },

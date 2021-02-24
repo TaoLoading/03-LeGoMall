@@ -30,7 +30,7 @@ export default new Router({
 					name: 'index',
 					component: Index,
 				},
-				// 商品栈路由
+				// 商品站路由
 				{
 					path: '/product/:id',
 					name: 'product',
