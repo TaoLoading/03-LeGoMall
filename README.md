@@ -442,3 +442,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     * 商品信息与购买信息相对应
     * 添加到购物车
     * 购物车数量统计
+
+## Part08 内容（购物车）
