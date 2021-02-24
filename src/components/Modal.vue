@@ -1,7 +1,10 @@
 <template>
+  <!-- 淡入淡出 -->
   <transition name="slide">
     <div class="modal" v-show="showModal">
+      <!-- 遮罩层 -->
       <div class="mask"></div>
+      <!-- 信息框 -->
       <div class="modal-dialog">
         <div class="modal-header">
           <span>{{ title }}</span>
@@ -49,7 +52,7 @@
 export default {
   name: 'modal',
   props: {
-    // 弹框类型：小small、中middle、大large、表单form
+    // 弹框类型：small:小框、middle:中框、large:大框、form:表单
     modalType: {
       type: String,
       default: 'form',

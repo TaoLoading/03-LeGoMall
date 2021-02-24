@@ -53,7 +53,7 @@
               ><img v-bind:src="item.img"
             /></a>
           </swiper-slide>
-          <!-- Optional controls -->
+          <!-- Swiper控件 -->
           <div class="swiper-pagination" slot="pagination"></div>
           <div class="swiper-button-prev" slot="button-prev"></div>
           <div class="swiper-button-next" slot="button-next"></div>
@@ -76,19 +76,22 @@
         </a>
       </div>
     </div>
-    <!-- 展品展示区 -->
+    <!-- 商品展示区 -->
     <div class="product-box">
       <div class="container">
         <h2>手机</h2>
         <div class="wrapper">
+          <!-- 左侧大图展示 -->
           <div class="banner-left">
             <a href="/#/product/35"
               ><img v-lazy="'/imgs/mix-alpha.jpg'" alt=""
             /></a>
           </div>
+          <!-- 右侧列表展示 -->
           <div class="list-box">
             <div class="list" v-for="(arr, i) in phoneList" v-bind:key="i">
               <div class="item" v-for="(item, j) in arr" v-bind:key="j">
+                <!-- 通过判断奇偶控制是否是新品 -->
                 <span v-bind:class="{ 'new-pro': j % 2 == 0 }">新品</span>
                 <div class="item-img">
                   <img v-lazy="item.mainImage" alt="" />
@@ -138,6 +141,7 @@ export default {
   },
   data() {
     return {
+      // 轮播图设置
       swiperOption: {
         autoplay: true,
         loop: true,
@@ -155,6 +159,7 @@ export default {
           prevEl: '.swiper-button-prev',
         },
       },
+      // 轮播图数据
       slideList: [
         {
           id: '42',
@@ -227,6 +232,7 @@ export default {
           img: '/imgs/ads/ads-4.jpg',
         },
       ],
+      // 商品列表数据(通过调取接口读取)
       phoneList: [],
       showModal: false,
     }
@@ -235,7 +241,9 @@ export default {
     this.init()
   },
   methods: {
+    // 加载商品列表
     init() {
+      // 向服务器发送参数以获取相应的信息
       this.axios
         .get('/products', {
           params: {
@@ -244,10 +252,14 @@ export default {
           },
         })
         .then((res) => {
+          // 因为数据库中商品图形状不一，故截取14条数据
+          // 前6条数据用于顶部导航菜单中的展示，后8条用于此处商品展示区
           res.list = res.list.slice(6, 14)
+          // 商品展示区为二行四列，故建立2*4二维数组
           this.phoneList = [res.list.slice(0, 4), res.list.slice(4, 8)]
         })
     },
+    // 添加到购物车
     addCart(id) {
       this.axios
         .post('/carts', {
@@ -262,6 +274,7 @@ export default {
           this.showModal = true
         })
     },
+    // 打开购物车
     goToCart() {
       this.$router.push('/cart')
     },
@@ -360,6 +373,7 @@ export default {
     }
   }
   .banner {
+    margin-top: 30px;
     margin-bottom: 50px;
   }
   .product-box {

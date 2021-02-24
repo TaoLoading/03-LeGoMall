@@ -11,6 +11,15 @@
           <a href="javascript:;">协议规则</a>
         </div>
         <!-- 右侧用户 -->
+        <div class="topbar-user">
+          <a href="javascript:;" v-if="username">{{ username }}</a>
+          <a href="javascript:;" v-if="!username" @click="login">登录</a>
+          <a href="javascript:;" v-if="username" @click="logout">退出</a>
+          <a href="/#/order/list" v-if="username">我的订单</a>
+          <a href="javascript:;" class="my-cart" @click="goToCart"
+            ><span class="icon-cart"></span>购物车({{ cartCount }})</a
+          >
+        </div>
       </div>
     </div>
     <!-- 商品导航条 -->
@@ -130,9 +139,16 @@ export default {
   name: 'nav-header',
   data() {
     return {
-      username: 'jack',
       phoneList: [],
     }
+  },
+  computed: {
+    username() {
+      return this.$store.state.username
+    },
+    cartCount() {
+      return this.$store.state.cartCount
+    },
   },
   // 用于加工价格显示的过滤器
   filters: {
@@ -143,9 +159,13 @@ export default {
   },
   mounted() {
     this.getProductList()
+    let params = this.$route.params
+    if (params && params.from == 'login') {
+      this.getCartCount()
+    }
   },
   methods: {
-    // 获取产品信息
+    // 获取商品信息
     getProductList() {
       this.axios
         .get('/products', {
@@ -164,6 +184,21 @@ export default {
     // 跳转到登录页面
     login() {
       this.$router.push('/login')
+    },
+    // 退出
+    logout() {
+      this.axios.post('/user/logout').then(() => {
+        this.$message.success('退出成功')
+        this.$cookie.set('userId', '', { expires: '-1' })
+        this.$store.dispatch('saveUserName', '')
+        this.$store.dispatch('saveCartCount', '0')
+      })
+    },
+    // 购物车统计
+    getCartCount() {
+      this.axios.get('/carts/products/sum').then((res = 0) => {
+        this.$store.dispatch('saveCartCount', res)
+      })
     },
     // 跳转到购物车页面
     goToCart() {

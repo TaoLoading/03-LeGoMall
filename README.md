@@ -125,6 +125,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### 01.HTML
 
 1. 根据页面布局使用div建立网页基本结构
+2. 注：后续HTML和CSS以及基础的js代码由于难度较低，不再列入本文档
 
 ### 02.Scss
 
@@ -191,4 +192,200 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 1. 基础轮播
 2. 点击跳转到商品详情
-3. 拖拽样式
+3. 拖拽翻页
+
+### 02.Swiper
+
+1. 定义
+    * Swiper是纯javascript打造的滑动特效插件，面向手机、平板电脑等移动终端。
+2. 功能
+    * Swiper能实现触屏焦点图、触屏Tab切换、触屏轮播图切换等常用效果。
+    * 本项目采用Swiper实现轮播图效果
+3. 实现过程
+    1. 引入Swiper模块并注册
+        * 由于只实现轮播效果，故用解构的形式引入Swiper插件：` import { swiper, swiperSlide } from 'vue-awesome-swiper' `
+        * 引入Swiper的css样式：` import 'swiper/dist/css/swiper.css' `
+        * 在components中注册Swiper
+    2. 建立轮播图布局代码和控件代码(此处包含了读取第3步数据的代码)
+        ```
+        <!-- 布局 -->
+        <swiper v-bind:options="swiperOption">
+          <swiper-slide v-for="(item, index) in slideList" v-bind:key="index">
+            <a v-bind:href="'/#/product/' + item.id"
+              ><img v-bind:src="item.img"
+            /></a>
+          </swiper-slide>
+          <!-- 控件 -->
+          <div class="swiper-pagination" slot="pagination"></div>
+          <div class="swiper-button-prev" slot="button-prev"></div>
+          <div class="swiper-button-next" slot="button-next"></div>
+        </swiper>
+        ```
+    3. 建立轮播所需要的数据(在data()中定义)
+        1. swiperOption
+            ```
+            swiperOption: {
+            autoplay: true,
+            loop: true,
+            }
+            ```
+        2. 图片数据(由于没有提高轮播接口，故需要自行建立轮播所需的图片数据)
+            ```
+            slideList: [
+            {
+              id: '42',
+              img: '/imgs/slider/slide-1.jpg',
+            },
+            ...
+            ],
+            ```
+    4. 完善css样式
+    5. 完善翻页效果(在data()的swiperOption中定义)
+        1. 使用Swiper中effect定义翻页效果：` effect: 'cube' `
+            ```
+            effect: 'cube',
+            cubeEffect: {
+              shadowOffset: 100,
+              shadowScale: 0.6,
+            },
+            ```
+        2. 定义分页器效果
+            ```
+            effect: 'cube',
+            cubeEffect: {
+              shadowOffset: 100,
+              shadowScale: 0.6,
+            },
+            ```
+        3. 定义翻页控件效果
+            ```
+            effect: 'cube',
+            cubeEffect: {
+              shadowOffset: 100,
+              shadowScale: 0.6,
+            },
+            ```
+## Part05 内容（首页-商品展示区）
+
+### 与NavHeader中读取商品类似，即调用接口获得数据库中商品的数据并渲染到页面
+
+## Part05 内容（首页-Modal弹窗组件）
+
+### 1.功能
+
+1. 实现弹窗效果
+2. 实现过程
+    1. 定义Modal组件架构，即modal.vue
+    2. 定义Modal组件架构，即modal.scss
+    3. 调用接口将组件渲染进页面，并完善信息
+        ```
+        <modal
+          title="提示"
+          sureText="查看购物车"
+          btnType="1"
+          modalType="middle"
+          v-bind:showModal="showModal"
+          v-on:submit="goToCart"
+          v-on:cancel="showModal = false"
+        >
+          <template v-slot:body>
+            <p>商品添加成功！</p>
+          </template>
+        </modal>
+        ```
+    4. 完善css样式
+    5. 使用transition组件实现淡入淡出效果
+
+## Part06 内容（首页-图片懒加载）
+
+### 1.懒加载作用
+
+1. 使用图片懒加载，防止页面一次性向服务器发送大量请求导致页面卡顿的现象出现，从而提高用户体验。
+
+### 2.实现过程
+
+1. 下载vue-lazyload插件，在main.js中导入并声明使用
+2. 配置vue-lazyload
+    ```
+    Vue.use(VueLazyLoad, {
+	    loading: '/imgs/loading-svg/loading-bars.svg',
+    })
+    ```
+3. 对需要进行懒加载的图片进行处理，将路径声明由` :src `修改为` v-lazy `
+
+## Part06 内容（登录注册登录）
+
+### 1.登录功能的基础实现过程
+
+1. 通过双向绑定获取输入的用户名和密码
+2. 调用后台登录接口
+    ```
+    login() {
+      let { username, password } = this
+      this.axios
+        .post('/user/login', {
+          username,
+          password,
+        })
+        .then((res) => {
+          this.$router.push({
+            name: 'index',
+            params: {
+              from: 'login',
+            },
+          })
+        })
+    },
+    ```
+3. 借助vue-cookie将登录信息存到cookie中
+   * 在main.js中声明并使用
+   * 在login方法中存入cookie，` this.$cookie.set('userId', res.id, { expires: '1M' }) `
+
+### 2.注册功能的基础实现过程
+
+1. 注册功能与登录功能类似，略过
+
+### 3.调用接口获取用户信息及购物车信息并使用vuex实现组件间通信
+
+1. 建立vuex项目结构(store文件内)
+    1. index.js 初始状态
+    2. actions.js 存储信息
+    3. mutations.js 改变状态
+    4. 在main.js中导入index.js
+2. 在login.vue中分发事件，以触发action行为
+    ` this.$store.dispatch('saveUserName', res.username) `
+3. 在App.vue中读取用户信息及购物车信息
+    ```
+    mounted() {
+      if (this.$cookie.get('userId')) {
+        this.getUser()
+        this.getCartCount()
+      }
+    },
+    methods: {
+      // 获取用户信息
+      getUser() {
+        this.axios.get('/user').then((res = {}) => {
+          this.$store.dispatch('saveUserName', res.username)
+        })
+      },
+      // 获取购物车中商品数量
+      getCartCount() {
+        this.axios.get('/carts/products/sum').then((res = 0) => {
+          this.$store.dispatch('saveCartCount', res)
+        })
+      },
+    },
+    ```
+4. 在NavHeader中读取数据用以展示信息
+    ```
+    computed: {
+      username() {
+        return this.$store.state.username
+      },
+      cartCount() {
+        return this.$store.state.cartCount
+      },
+    },
+    ```
+    * 注：在computed中读取数据而不是在data中直接读取，是因为当程序启动时，先加载App.vue，再加载NavHeader.vue。调用接口获取用户信息并写入的整个过程放在App.vue中，整个过程需要时间，而在NavHeader.vue中读取数据的过程相比之下几乎不需要时间，这就导致了先在NavHeader.vue读取数据，此时为空

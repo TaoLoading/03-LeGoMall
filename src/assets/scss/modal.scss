@@ -1,3 +1,6 @@
+/* 
+  弹窗样式表
+*/
 .modal {
 	@include position(fixed);
 	z-index: 10;

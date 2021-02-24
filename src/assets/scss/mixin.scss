@@ -1,5 +1,5 @@
 /* 
-    公共样式表(mixin版本)
+  公共样式表(mixin版本)
 */
 
 // flex布局复用
@@ -8,7 +8,6 @@
 	justify-content: $hov;
 	align-items: $col;
 }
-
 // 背景图片样式复用
 @mixin bgImg($w: 0, $h: 0, $img: '', $size: contain) {
 	display: inline-block;
@@ -17,6 +16,7 @@
 	background: url($img) no-repeat center;
 	background-size: $size;
 }
+// 定位复用
 @mixin position($pos: absolute, $top: 0, $left: 0, $w: 100%, $h: 100%) {
 	position: $pos;
 	top: $top;
