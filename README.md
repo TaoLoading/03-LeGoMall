@@ -388,4 +388,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
       },
     },
     ```
-    * 注：在computed中读取数据而不是在data中直接读取，是因为当程序启动时，先加载App.vue，再加载NavHeader.vue。调用接口获取用户信息并写入的整个过程放在App.vue中，整个过程需要时间，而在NavHeader.vue中读取数据的过程相比之下几乎不需要时间，这就导致了先在NavHeader.vue读取数据，此时为空
+    * 注：在computed中读取数据而不是在data中直接读取，是因为当程序启动时，先加载App.vue，再加载NavHeader.vue。调用接口获取用户信息并写入的整个过程放在App.vue中，整个过程需要时间，而在NavHeader.vue中读取数据的过程相比之下几乎不需要时间，这就导致了先在NavHeader.vue中读取数据时数据还没有被请求回来，所以这种情况有可能会取不到值
