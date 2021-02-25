@@ -1,12 +1,25 @@
-<!-- 订单页面 -->
+<!-- 订单列表页面 -->
 <template>
-	<div>
-		orderList
-	</div>
+  <div>
+    <router-view></router-view>
+    <service-bar></service-bar>
+    <nav-footer></nav-footer>
+  </div>
 </template>
-
 <script>
+import ServiceBar from './../components/ServiceBar'
+import NavFooter from './../components/NavFooter'
 export default {
-	name: 'order-list',
+  name: 'order',
+  data() {
+    return {
+      title: '',
+      tip: '',
+    }
+  },
+  components: {
+    ServiceBar,
+    NavFooter,
+  },
 }
 </script>
