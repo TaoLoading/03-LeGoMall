@@ -161,6 +161,7 @@ export default {
   },
   mounted() {
     this.getProductList()
+    // 如果是从登录页面进入首页，则调用getCartCount。否则不调用，避免多次重复调用getCartCount造成资源浪费
     let params = this.$route.params
     if (params && params.from == 'login') {
       this.getCartCount()

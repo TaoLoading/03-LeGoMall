@@ -460,3 +460,31 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 4. 商品数量
 5. 结算功能
 6. 注：以上信息都是通过与后台交互得到
+
+## Part08 内容
+
+### 1. Element UI
+
+1. 引入插件
+    * element-ui
+    * babel-plugin-component：实现按需加载
+    * 注：按需引入和按需加载的区别是，最后导出包的时候按需引入仍会导入整个包，而按需加载不会
+2. 配置babel.config.js
+3. 在main.js中引入插件并使用
+    ```
+    import { Message } from 'element-ui'
+    import 'element-ui/lib/theme-chalk/index.css'
+    ```
+4. 调用
+    1. 方式一，调用` Message.xxx `的形式
+    2. 方式二，将Message挂载到Vue实例上，使用挂载后的方式调用
+
+### 2. babel
+
+## Part08 内容（退出）
+
+### 注意点
+
+1. 清除cookie
+2. 重新获取数据。由于是单页面应用，故点击退出后不会刷新页面，导致定义在App上的方法不会被调用。故退出后需要重新获取购物车数量，以保证数量同步
+3. 项目优化。对从login跳转到index的页面进行获取后台数据的处理，而直接跳转到index页面的不会进行获取数据的处理，防止浪费资源的现象发生
