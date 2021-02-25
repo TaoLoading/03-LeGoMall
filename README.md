@@ -23,6 +23,14 @@ yarn lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
+# 项目bug
+
+## 01. 未登录时点击商品上的购物车图标依然可以添加到购物车
+
+* 问题推测：虽然未登录时错误拦截能够返回未登录的状态码，但页面没有做好跳转，可能是跳转路由出错
+
+## 02. 购物车页面，所显示的“共n件商品，已选择n件”，其中n为购物车中商品类别数量而不是总数量
+
 # 项目进程
 
 ## Part01 内容
@@ -390,6 +398,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     ```
     * 注：在computed中读取数据而不是在data中直接读取，是因为当程序启动时，先加载App.vue，再加载NavHeader.vue。调用接口获取用户信息并写入的整个过程放在App.vue中，整个过程需要时间，而在NavHeader.vue中读取数据的过程相比之下几乎不需要时间，这就导致了先在NavHeader.vue中读取数据时数据还没有被请求回来，所以这种情况有可能会取不到值
 
+5. 使用myActions和myState完善vuex
+
 ## Part07 内容（商品站）
 
 ### 1.磁吸效果实现
@@ -437,10 +447,16 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Part07 内容（商品详情页）
 
-1. 主要内容
-    * 从数据库中读取数据并渲染到页面
-    * 商品信息与购买信息相对应
-    * 添加到购物车
-    * 购物车数量统计
+1. 从数据库中读取数据并渲染到页面
+2. 商品信息与购买信息相对应
+3.  添加到购物车
+4.   购物车数量统计
 
 ## Part08 内容（购物车）
+
+1. OrderHeader中使用插槽渲染提示信息tip
+2. 购物车列表的渲染
+3. 选中状态
+4. 商品数量
+5. 结算功能
+6. 注：以上信息都是通过与后台交互得到
