@@ -88,10 +88,14 @@ export default {
   },
   data() {
     return {
-      list: [], //商品列表
-      allChecked: false, //是否全选
-      cartTotalPrice: 0, //商品总金额
-      checkedNum: 0, //选中商品数量
+      // 商品列表
+      list: [],
+      // 是否全选
+      allChecked: false,
+      // 商品总金额
+      cartTotalPrice: 0,
+      // 选中商品数量
+      checkedNum: 0,
     }
   },
   mounted() {
@@ -109,18 +113,24 @@ export default {
       let quantity = item.quantity,
         selected = item.productSelected
       if (type == '-') {
+        // 减
         if (quantity == 1) {
           this.$message.warning('商品至少保留一件')
           return
         }
         --quantity
-      } else if (type == '+') {
+      }
+      // 加
+      else if (type == '+') {
+        // 控制所选不能超过库存数量
         if (quantity > item.productStock) {
           this.$message.warning('购买数量不能超过库存数量')
           return
         }
         ++quantity
-      } else {
+      }
+      // 选中状态取反
+      else {
         selected = !item.productSelected
       }
       this.axios
@@ -148,13 +158,18 @@ export default {
     },
     // 公共赋值
     renderData(res) {
+      // 购物车列表
       this.list = res.cartProductVoList || []
+      // 是否选中
       this.allChecked = res.selectedAll
+      // 购物车总金额
       this.cartTotalPrice = res.cartTotalPrice
+      // 过滤出选中的商品数量
       this.checkedNum = this.list.filter((item) => item.productSelected).length
     },
     // 购物车下单
     order() {
+      // 确保提交购物车时有商品被选中
       let isCheck = this.list.every((item) => !item.productSelected)
       if (isCheck) {
         this.$message.warning('请选择一件商品')
