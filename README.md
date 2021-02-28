@@ -35,6 +35,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## 04.首页广告位没有显示出来
 
+## 05.UI设计
+
 # 项目进程
 
 ## Part01 内容
@@ -325,7 +327,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     ```
 3. 对需要进行懒加载的图片进行处理，将路径声明由` :src `修改为` v-lazy `
 
-## Part06 内容（登录注册登录）
+## Part06 内容（登录注册）
 
 ### 1.登录功能的基础实现过程
 
