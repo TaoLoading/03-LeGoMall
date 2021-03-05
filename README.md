@@ -455,8 +455,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 1. 从数据库中读取数据并渲染到页面
 2. 商品信息与购买信息相对应
-3.  添加到购物车
-4.   购物车数量统计
+3. 添加到购物车
+4. 购物车数量统计
 
 ## Part08 内容（购物车）
 
