@@ -14,4 +14,8 @@ module.exports = {
 		// 关闭ESLint
 		// lintOnSave: false,
 	},
+	// 保证路由按需加载
+	chainWebpack: (config) => {
+		config.plugins.delete('prefetch')
+	},
 }
