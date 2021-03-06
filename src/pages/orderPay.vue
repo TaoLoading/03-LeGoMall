@@ -74,6 +74,7 @@
         </div>
       </div>
     </div>
+    <!-- 微信支付弹窗 -->
     <scan-pay-code
       v-if="showPay"
       @close="closePayModal"
@@ -95,6 +96,7 @@
   </div>
 </template>
 <script>
+// qrcode，用于生成二维码
 import QRCode from 'qrcode'
 import OrderHeader from './../components/OrderHeader'
 import ScanPayCode from './../components/ScanPayCode'
@@ -113,7 +115,7 @@ export default {
       showDetail: false,
       // 支付类型
       payType: '',
-      // 是否显示微信支付弹框
+      // 是否显示微信支付弹窗
       showPay: false,
       // 微信支付的二维码地址
       payImg: '',
@@ -149,23 +151,27 @@ export default {
     // 支付类型
     paySubmit(payType) {
       if (payType == 1) {
+        // 支付宝支付
         // 当选择支付宝支付时，以新窗口的形式('_blank')打开支付宝中间页
         window.open('/#/order/alipay?orderId=' + this.orderId, '_blank')
       } else {
+        // 微信支付
         this.axios
           .post('/pay', {
             orderId: this.orderId,
-            orderName: 'Vue高仿小米商城',
+            orderName: '乐购在线商城',
             // 支付金额，单位元
             amount: 0.01,
             // 支付方式：1支付宝，2微信
             payType: 2,
           })
           .then((res) => {
+            // 使用qrcode将获取到的res.content转换成base64格式的二维码
             QRCode.toDataURL(res.content)
               .then((url) => {
                 this.showPay = true
                 this.payImg = url
+                // 开始轮询订单状态
                 this.loopOrderState()
               })
               .catch(() => {
@@ -178,14 +184,19 @@ export default {
     closePayModal() {
       this.showPay = false
       this.showPayModal = true
+      // 清除定时器
       clearInterval(this.T)
     },
     // 轮询当前订单支付状态
     loopOrderState() {
       this.T = setInterval(() => {
+        // 拉取订单状态(0：已取消，10：未付款，20：已付款)
         this.axios.get(`/orders/${this.orderId}`).then((res) => {
+          // 当订单已支付时
           if (res.status == 20) {
+            // 清除定时器
             clearInterval(this.T)
+            // 跳转到订单列表
             this.goOrderList()
           }
         })

@@ -30,7 +30,7 @@ export default {
       this.axios
         .post('/pay', {
           orderId: this.orderId,
-          orderName: 'Vue高仿小米商城',
+          orderName: '乐购在线商城',
           // 支付价格，单位元
           amount: 0.01,
           // 支付方式：支付宝，2微信

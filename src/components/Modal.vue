@@ -15,6 +15,7 @@
           ></a>
         </div>
         <div class="modal-body">
+          <!-- 插槽展示信息 -->
           <slot name="body"></slot>
         </div>
         <div class="modal-footer">
