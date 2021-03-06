@@ -49,7 +49,7 @@ axios.interceptors.response.use(
 			return Promise.reject(res)
 		}
 	},
-	// 公共状态码拦截
+	// http状态码拦截
 	(error) => {
 		let res = error.response
 		Message.error(res.data.message)

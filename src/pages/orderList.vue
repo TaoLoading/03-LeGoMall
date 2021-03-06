@@ -9,6 +9,7 @@
     <div class="wrapper">
       <div class="container">
         <div class="order-box">
+          <!-- 加入loading，等待数据获取 -->
           <loading v-if="loading"></loading>
           <div class="order" v-for="(order, index) in list" :key="index">
             <div class="order-title">
@@ -45,9 +46,11 @@
                   </div>
                 </div>
               </div>
+              <!-- 已付款 -->
               <div class="good-state fr" v-if="order.status == 20">
                 <a href="javascript:;">{{ order.statusDesc }}</a>
               </div>
+              <!-- 未付款 -->
               <div class="good-state fr" v-else>
                 <a href="javascript:;" @click="goPay(order.orderNo)">{{
                   order.statusDesc
@@ -55,16 +58,6 @@
               </div>
             </div>
           </div>
-          <el-pagination
-            v-if="true"
-            class="pagination"
-            background
-            layout="prev, pager, next"
-            :pageSize="pageSize"
-            :total="total"
-            @current-change="handleChange"
-          >
-          </el-pagination>
           <div class="load-more" v-if="false">
             <el-button type="primary" :loading="loading" @click="loadMore"
               >加载更多</el-button
@@ -83,6 +76,7 @@
               v-show="loading"
             />
           </div>
+          <!-- 当loading界面关闭并且没有数据时显示 -->
           <no-data v-if="!loading && list.length == 0"></no-data>
         </div>
       </div>
@@ -93,35 +87,24 @@
 import OrderHeader from './../components/OrderHeader'
 import Loading from './../components/Loading'
 import NoData from './../components/NoData'
-import { Pagination, Button } from 'element-ui'
-import infiniteScroll from 'vue-infinite-scroll'
 export default {
   name: 'order-list',
   components: {
     OrderHeader,
     Loading,
     NoData,
-    [Pagination.name]: Pagination,
-    [Button.name]: Button,
-  },
-  directives: {
-    infiniteScroll,
   },
   data() {
     return {
       loading: false,
       list: [],
-      pageSize: 10,
-      pageNum: 1,
-      total: 0,
-      showNextPage: true, //加载更多：是否显示按钮
-      busy: false, //滚动加载，是否触发
     }
   },
   mounted() {
     this.getOrderList()
   },
   methods: {
+    // 获取订单列表
     getOrderList() {
       this.loading = true
       this.busy = true
@@ -143,59 +126,28 @@ export default {
           this.loading = false
         })
     },
+    // 去支付
     goPay(orderNo) {
       // 三种路由跳转方式
-      // this.$router.push('/order/pay')
-      /*this.$router.push({
-          name:'order-pay',
-          query:{
-            orderNo
-          }
-        })*/
+      /**
+       * 第一种，直接跳转
+       * this.$router.push('/order/pay')
+       *
+       * 第二种，使用name
+       * this.$router.push({
+       *   name:'order-pay', // 此处是路由名称
+       *   query:{
+       *     orderNo
+       *   }
+       * })
+       *  */
+      // 第三种，使用path
       this.$router.push({
-        path: '/order/pay',
+        path: '/order/pay', // 此处是路由路径
         query: {
           orderNo,
         },
       })
-    },
-    // 第一种方法：分页器
-    handleChange(pageNum) {
-      this.pageNum = pageNum
-      this.getOrderList()
-    },
-    // 第二种方法：加载更多按钮
-    loadMore() {
-      this.pageNum++
-      this.getOrderList()
-    },
-    // 第三种方法：滚动加载，通过npm插件实现
-    scrollMore() {
-      this.busy = true
-      setTimeout(() => {
-        this.pageNum++
-        this.getList()
-      }, 500)
-    },
-    // 专门给scrollMore使用
-    getList() {
-      this.loading = true
-      this.axios
-        .get('/orders', {
-          params: {
-            pageSize: 10,
-            pageNum: this.pageNum,
-          },
-        })
-        .then((res) => {
-          this.list = this.list.concat(res.list)
-          this.loading = false
-          if (res.hasNextPage) {
-            this.busy = false
-          } else {
-            this.busy = true
-          }
-        })
     },
   },
 }
@@ -261,20 +213,6 @@ export default {
             }
           }
         }
-      }
-      .pagination {
-        text-align: right;
-      }
-      .el-pagination.is-background .el-pager li:not(.disabled).active {
-        background-color: #ff6600;
-      }
-      .el-button--primary {
-        background-color: #ff6600;
-        border-color: #ff6600;
-      }
-      .load-more,
-      .scroll-more {
-        text-align: center;
       }
     }
   }
