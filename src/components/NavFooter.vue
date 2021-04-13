@@ -25,7 +25,7 @@ export default {
 <style lang="scss" scoped>
 .footer {
   height: 234px;
-  border-top: 4px solid #ff6600;
+  border-top: 4px solid #ff0047;
   background-color: #333333;
   color: #999999;
   font-size: 16px;
@@ -51,7 +51,7 @@ export default {
   }
   .copyright {
     .domain {
-      color: #ff6600;
+      color: #ff0047;
     }
   }
 }

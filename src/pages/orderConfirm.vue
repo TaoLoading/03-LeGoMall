@@ -510,7 +510,7 @@ export default {
           }
           .good-total {
             padding-right: 44px;
-            color: #ff6600;
+            color: #ff0047;
           }
         }
       }

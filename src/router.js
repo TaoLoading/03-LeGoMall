@@ -80,5 +80,11 @@ export default new Router({
 			name: 'login',
 			component: () => import('./pages/login.vue'),
 		},
+		// 注册路由
+		{
+			path: '/register',
+			name: 'register',
+			component: () => import('./pages/register.vue'),
+		},
 	],
 })

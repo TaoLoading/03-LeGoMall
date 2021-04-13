@@ -8,8 +8,7 @@
       <div class="container">
         <div class="login-form">
           <h3>
-            <span class="checked">帐号登录</span><span class="sep-line">|</span
-            ><span>扫码登录</span>
+            <span class="checked">帐号登录</span>
           </h3>
           <div class="input">
             <input type="text" placeholder="请输入帐号" v-model="username" />
@@ -25,8 +24,8 @@
             <a href="javascript:;" class="btn" @click="login">登录</a>
           </div>
           <div class="tips">
-            <div class="sms" @click="register">手机短信登录/注册</div>
-            <div class="reg">立即注册<span>|</span>忘记密码？</div>
+            <div class="sms">欢迎进入乐购商城</div>
+            <div class="reg" @click="register">没有账号？点击立即注册</div>
           </div>
         </div>
       </div>
@@ -76,17 +75,8 @@ export default {
           })
         })
     },
-    // 注册
     register() {
-      this.axios
-        .post('/user/register', {
-          username: 'admin1008611111111',
-          password: 'admin1',
-          email: 'admin1@1631111111111111.com',
-        })
-        .then(() => {
-          alert('注册成功')
-        })
+      this.$router.push('/register')
     },
   },
 }
@@ -109,7 +99,7 @@ export default {
         padding-left: 31px;
         padding-right: 31px;
         width: 410px;
-        height: 510px;
+        height: 450px;
         background-color: #ffffff;
         position: absolute;
         bottom: 29px;
@@ -120,10 +110,7 @@ export default {
           text-align: center;
           margin: 40px auto 49px;
           .checked {
-            color: #ff6600;
-          }
-          .sep-line {
-            margin: 0 32px;
+            color: #ff0047;
           }
         }
         .input {
@@ -150,12 +137,12 @@ export default {
           display: flex;
           justify-content: space-between;
           font-size: 14px;
-          cursor: pointer;
           .sms {
-            color: #ff6600;
+            color: #ff0047;
           }
           .reg {
             color: #999999;
+            cursor: pointer;
             span {
               margin: 0 7px;
             }

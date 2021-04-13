@@ -254,8 +254,8 @@ export default {
             background-color: #666666;
           }
           &.checked {
-            border: 1px solid #ff6600;
-            color: #ff6600;
+            border: 1px solid #ff0047;
+            color: #ff0047;
           }
         }
       }
@@ -269,7 +269,7 @@ export default {
         box-sizing: border-box;
         .phone-total {
           font-size: 24px;
-          color: #ff6600;
+          color: #ff0047;
           margin-top: 18px;
         }
       }

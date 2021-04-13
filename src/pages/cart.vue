@@ -200,7 +200,7 @@ export default {
         margin-right: 17px;
         cursor: pointer;
         &.checked {
-          background: url('/imgs/icon-gou.png') #ff6600 no-repeat center;
+          background: url('/imgs/icon-gou.png') #ff0047 no-repeat center;
           background-size: 16px 12px;
           border: none;
         }
@@ -271,7 +271,7 @@ export default {
           }
           .item-total {
             flex: 1;
-            color: #ff6600;
+            color: #ff0047;
           }
           .item-del {
             flex: 1;
@@ -297,13 +297,13 @@ export default {
           margin-right: 37px;
         }
         span {
-          color: #ff6600;
+          color: #ff0047;
           margin: 0 5px;
         }
       }
       .total {
         font-size: 14px;
-        color: #ff6600;
+        color: #ff0047;
         span {
           font-size: 24px;
         }

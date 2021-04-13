@@ -31,9 +31,10 @@
         </div>
         <!-- 顶部商品菜单 -->
         <div class="header-menu">
+          <!-- 手机 -->
           <div class="item-menu">
-            <span>小米手机</span>
-            <!-- 小米手机下拉菜单 -->
+            <span>手机</span>
+            <!-- 手机下拉菜单 -->
             <div class="children">
               <ul>
                 <li
@@ -56,12 +57,14 @@
               </ul>
             </div>
           </div>
+          <!-- 家电 -->
           <div class="item-menu">
-            <span>RedMi红米</span>
+            <span>家电</span>
           </div>
+          <!-- 服装 -->
           <div class="item-menu">
-            <span>电视</span>
-            <!-- 电视下拉菜单 -->
+            <span>服装</span>
+            <!-- 鞋帽下拉菜单 -->
             <div class="children">
               <ul>
                 <li class="product">
@@ -120,6 +123,14 @@
                 </li>
               </ul>
             </div>
+          </div>
+          <!-- 鞋帽 -->
+          <div class="item-menu">
+            <span>鞋帽</span>
+          </div>
+          <!-- 9.9包邮 -->
+          <div class="item-menu">
+            <span>9.9包邮</span>
           </div>
         </div>
         <!-- 搜索框 -->
@@ -229,7 +240,7 @@ export default {
       }
       .my-cart {
         width: 110px;
-        background-color: #ff6600;
+        background-color: #ff0047;
         text-align: center;
         color: #ffffff;
         margin-right: 0;
