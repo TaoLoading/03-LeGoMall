@@ -8,7 +8,7 @@
         <div class="nav-menu">
           <ul class="menu-wrap">
             <li class="menu-item">
-              <a href="javascript:;">手机 电话卡</a>
+              <a href="javascript:;">手机</a>
               <div class="children">
                 <ul v-for="(item, i) in menuList" v-bind:key="i">
                   <li v-for="(sub, j) in item" v-bind:key="j">
@@ -24,25 +24,25 @@
               </div>
             </li>
             <li class="menu-item">
-              <a href="javascript:;">电视 盒子</a>
+              <a href="javascript:;">笔记本</a>
             </li>
             <li class="menu-item">
-              <a href="javascript:;">笔记本 平板</a>
+              <a href="javascript:;">智能家居</a>
             </li>
             <li class="menu-item">
-              <a href="javascript:;">家电 插线板</a>
+              <a href="javascript:;">服装</a>
             </li>
             <li class="menu-item">
-              <a href="javascript:;">出行 穿戴</a>
+              <a href="javascript:;">鞋帽</a>
             </li>
             <li class="menu-item">
-              <a href="javascript:;">智能 路由器</a>
+              <a href="javascript:;">零食</a>
             </li>
             <li class="menu-item">
-              <a href="javascript:;">电源 配件</a>
+              <a href="javascript:;">团购促销</a>
             </li>
             <li class="menu-item">
-              <a href="javascript:;">生活 箱包</a>
+              <a href="javascript:;">9.9包邮</a>
             </li>
           </ul>
         </div>
@@ -60,7 +60,28 @@
         </swiper>
       </div>
       <!-- 广告位 -->
-      <div class="ads-box">
+      <div class="guanggao">
+        <!-- <a
+          v-bind:href="'/#/product/' + item.id"
+          v-for="(item, index) in adsList"
+          v-bind:key="index"
+        >
+          <img v-lazy="item.img" alt="" />
+        </a> -->
+        <a href="/#/product/33">
+          <img src="../../public/imgs/ads/ads-1.jpg" alt=""
+        /></a>
+        <a href="/#/product/33">
+          <img src="../../public/imgs/ads/ads-2.jpg" alt=""
+        /></a>
+        <a href="/#/product/33">
+          <img src="../../public/imgs/ads/ads-3.jpg" alt=""
+        /></a>
+        <a href="/#/product/33">
+          <img src="../../public/imgs/ads/ads-4.jpg" alt=""
+        /></a>
+      </div>
+      <!-- <div class="ads-box">
         <a
           v-bind:href="'/#/product/' + item.id"
           v-for="(item, index) in adsList"
@@ -68,11 +89,11 @@
         >
           <img v-lazy="item.img" alt="" />
         </a>
-      </div>
+      </div> -->
       <!-- banner图 -->
       <div class="banner">
         <a href="/#/product/30">
-          <img v-lazy="'/imgs/banner-1.png'" alt="" />
+          <img v-lazy="'/imgs/banner-1.jpg'" alt="" />
         </a>
       </div>
     </div>
@@ -163,11 +184,11 @@ export default {
       slideList: [
         {
           id: '42',
-          img: '/imgs/slider/slide-1.jpg',
+          img: '/imgs/slider/slide-1.jpeg',
         },
         {
           id: '45',
-          img: '/imgs/slider/slide-2.jpg',
+          img: '/imgs/slider/slide-2.jpeg',
         },
         {
           id: '46',
@@ -179,7 +200,7 @@ export default {
         },
         {
           id: '',
-          img: '/imgs/slider/slide-1.jpg',
+          img: '/imgs/slider/slide-5.jpg',
         },
       ],
       // 商品导航区数据
@@ -214,6 +235,7 @@ export default {
         [0, 0, 0, 0],
         [0, 0, 0, 0],
       ],
+      // 广告区数据
       adsList: [
         {
           id: 33,
@@ -363,7 +385,16 @@ export default {
       }
     }
   }
-  .ads-box {
+  /* .ads-box {
+    @include flex();
+    margin-top: 14px;
+    margin-bottom: 31px;
+    a {
+      width: 296px;
+      height: 167px;
+    }
+  } */
+  .guanggao {
     @include flex();
     margin-top: 14px;
     margin-bottom: 31px;

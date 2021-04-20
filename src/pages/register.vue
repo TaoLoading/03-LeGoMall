@@ -40,9 +40,7 @@
         ><span>|</span>
         <a href="javascript:;" target="_blank">售后服务</a>
       </div>
-      <p class="copyright">
-        Copyright ©2019 mi.futurefe.com All Rights Reserved.
-      </p>
+      <p class="copyright">Copyright ©2019 legou.com All Rights Reserved.</p>
     </div>
   </div>
 </template>
@@ -98,6 +96,8 @@ export default {
         position: absolute;
         bottom: 29px;
         right: 0;
+        left: 50%;
+        margin-left: -205px;
         h3 {
           line-height: 23px;
           font-size: 24px;
