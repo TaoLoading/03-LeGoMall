@@ -57,13 +57,13 @@
               </ul>
             </div>
           </div>
-          <!-- 家电 -->
-          <div class="item-menu">
-            <span>家电</span>
-          </div>
           <!-- 服装 -->
           <div class="item-menu">
             <span>服装</span>
+          </div>
+          <!-- 电视 -->
+          <div class="item-menu">
+            <span>电视</span>
             <!-- 鞋帽下拉菜单 -->
             <div class="children">
               <ul>
