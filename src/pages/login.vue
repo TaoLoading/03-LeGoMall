@@ -38,7 +38,7 @@
         ><span>|</span>
         <a href="javascript:;" target="_blank">售后服务</a>
       </div>
-      <p class="copyright">Copyright ©2019 legou.com All Rights Reserved.</p>
+      <p class="copyright">Copyright ©2021 legou.com All Rights Reserved.</p>
     </div>
   </div>
 </template>

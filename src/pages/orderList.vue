@@ -98,6 +98,7 @@ export default {
     return {
       loading: false,
       list: [],
+      T: '',
     }
   },
   mounted() {
@@ -148,6 +149,21 @@ export default {
           orderNo,
         },
       })
+    },
+    // 轮询当前订单支付状态
+    loopOrderState() {
+      this.T = setInterval(() => {
+        // 拉取订单状态(0：已取消，10：未付款，20：已付款)
+        this.axios.get(`/orders/${this.orderId}`).then((res) => {
+          // 当订单已支付时
+          if (res.status == 20) {
+            // 清除定时器
+            clearInterval(this.T)
+            // 跳转到订单列表
+            this.goOrderList()
+          }
+        })
+      }, 1000)
     },
   },
 }

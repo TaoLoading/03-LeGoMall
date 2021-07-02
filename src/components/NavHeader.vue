@@ -137,7 +137,7 @@
         <div class="header-search">
           <div class="wrapper">
             <input type="text" name="keyword" />
-            <a href="javascript:;"></a>
+            <a href="/#/product/33"></a>
           </div>
         </div>
       </div>

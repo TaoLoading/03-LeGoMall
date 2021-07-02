@@ -196,11 +196,11 @@ export default {
         },
         {
           id: '',
-          img: '/imgs/slider/slide-4.jpg',
+          img: '/imgs/slider/slide-1.jpeg',
         },
         {
           id: '',
-          img: '/imgs/slider/slide-5.jpg',
+          img: '/imgs/slider/slide-2.jpeg',
         },
       ],
       // 商品导航区数据

@@ -196,8 +196,8 @@ export default {
           if (res.status == 20) {
             // 清除定时器
             clearInterval(this.T)
-            // 跳转到订单列表
-            this.goOrderList()
+            // 刷新页面
+            window.localtion.reload()
           }
         })
       }, 1000)
