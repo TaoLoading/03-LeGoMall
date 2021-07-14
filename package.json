@@ -1,7 +1,8 @@
 {
   "name": "legoumall",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
+  "author": "TaoLoading",
   "scripts": {
     "serve": "vue-cli-service serve --mode=development",
     "test": "vue-cli-service serve --mode=test",
