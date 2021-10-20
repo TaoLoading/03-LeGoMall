@@ -57,6 +57,7 @@ axios.interceptors.response.use(
 	}
 )
 
+// 使用vue-axios将作用域挂载到Vue实例上，从而实现直接this.axios方便使用
 Vue.use(VueAxios, axios)
 Vue.use(VueCookie)
 Vue.use(VueLazyLoad, {
